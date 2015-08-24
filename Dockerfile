@@ -28,7 +28,7 @@ RUN         wget --quiet http://www.squid-cache.org/Versions/v3/3.5/squid-${SQUI
 RUN         tar -xzf squid-${SQUID35_VERSION}.tar.gz && rm -f squid-${SQUID35_VERSION}.tar.gz
 
 # Enter our source directory
-WORKDIR     /usr/src/squid-${SQUID35_VERSION}
+RUN         cd /usr/src/squid-${SQUID35_VERSION}
 
 # Configure the squid build as desired
 RUN         ./configure \
