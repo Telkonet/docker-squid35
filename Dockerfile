@@ -67,3 +67,7 @@ RUN         cd /usr/src/squid-${SQUID35_VERSION} && ./configure \
 
 # Perform squid compliation & installation
 RUN     cd /usr/src/squid-${SQUID35_VERSION} && make && make install
+
+# Ensure the CA cert daemon is up to date
+RUN     /usr/lib/squid/ssl_crtd -c -s /var/spool/squid3_ssldb
+RUN     chown -R ${SQUID_USER}:${SQUID_USER} /var/spool/squid3_ssldb
