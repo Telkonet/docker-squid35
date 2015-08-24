@@ -27,6 +27,14 @@ WORKDIR     /usr/src
 RUN         wget --quiet http://www.squid-cache.org/Versions/v3/3.5/squid-${SQUID35_VERSION}.tar.gz
 RUN         tar -xzf squid-${SQUID35_VERSION}.tar.gz && rm -f squid-${SQUID35_VERSION}.tar.gz
 
+# Copy in the entrypoint program
+COPY        entrypoint.sh /sbin/entrypoint.sh
+RUN         chmod 755 /sbin/entrypoint.sh
+
+EXPOSE      3128/tcp
+VOLUME      [ "${SQUID_CACHE_DIR}" ]
+ENTRYPOINT  [ "/sbin/entrypoint.sh" ]
+
 # Configure the squid build as desired
 RUN         cd /usr/src/squid-${SQUID35_VERSION} && ./configure \
                 --prefix=/usr \
