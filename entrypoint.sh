@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+create_ssldb() {
+    /usr/lib/squid/ssl_crtd -c -s /var/spool/squid3_ssldb
+    chown -R ${SQUID_USER}:${SQUID_USER} /var/spool/squid3_ssldb
+}
+
 create_log_dir() {
   mkdir -p ${SQUID_LOG_DIR}
   chmod -R 755 ${SQUID_LOG_DIR}
@@ -22,6 +27,7 @@ apply_backward_compatibility_fixes() {
 create_log_dir
 create_cache_dir
 apply_backward_compatibility_fixes
+create_ssldb
 
 # allow arguments to be passed to squid3
 if [[ ${1:0:1} = '-' ]]; then
