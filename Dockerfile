@@ -5,10 +5,10 @@ MAINTAINER  btomasik@telkonet.com
 # Maintain ENV variables originally found from
 # sameersbn/docker-squid
 ###
-ENV SQUID35_VERSION=3.5.7 \
-    SQUID_CACHE_DIR=/var/spool/squid3 \
-    SQUID_LOG_DIR=/var/log/squid3 \
-    SQUID_USER=proxy
+ENV SQUID35_VERSION 3.5.7
+ENV SQUID_CACHE_DIR /var/spool/squid3
+ENV SQUID_LOG_DIR   /var/log/squid3
+ENV SQUID_USER      proxy
 
 ###
 # Update the container
