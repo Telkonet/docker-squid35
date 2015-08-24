@@ -18,6 +18,7 @@ RUN         apt-get update \
                 && apt-get upgrade -qq \
                 && apt-get install --no-install-recommends -qq \
                     build-essential \
+                    ca-certificates \
                     libssl-dev \
                     wget \
                 && rm -rf /var/lib/apt/lists/*
