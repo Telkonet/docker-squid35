@@ -55,3 +55,6 @@ RUN         ./configure \
                 --disable-ipv6 \
                 --with-openssl \
                 --with-large-files
+
+# Perform squid compliation & installation
+RUN     make && make install
