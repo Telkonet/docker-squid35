@@ -11,15 +11,16 @@ ENV SQUID_LOG_DIR   /var/log/squid3
 ENV SQUID_USER      proxy
 
 ###
-# Update the container
+# Update the container and install dependencies, then finally clean up all
+# cached apt content
 ###
-RUN         apt-get update && apt-get upgrade -qq
-
-# Install required applications/libraries
-RUN         apt-get install --no-install-recommends -qq \
-                build-essential \
-                libssl-dev \
-                wget
+RUN         apt-get update \
+                && apt-get upgrade -qq \
+                && apt-get install --no-install-recommends -qq \
+                    build-essential \
+                    libssl-dev \
+                    wget \
+                && rm -rf /var/lib/apt/lists/*
 
 # Setup source directory
 RUN         mkdir -p /usr/src
