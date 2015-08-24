@@ -32,6 +32,9 @@ RUN         tar -xzf squid-${SQUID35_VERSION}.tar.gz && rm -f squid-${SQUID35_VE
 COPY        entrypoint.sh /sbin/entrypoint.sh
 RUN         chmod 755 /sbin/entrypoint.sh
 
+# Ensure the squid config directory exists
+RUN         mkdir -p /etc/squid3
+
 EXPOSE      3128/tcp
 VOLUME      [ "${SQUID_CACHE_DIR}" ]
 ENTRYPOINT  [ "/sbin/entrypoint.sh" ]
