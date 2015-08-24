@@ -18,7 +18,6 @@ RUN         apt-get update && apt-get upgrade -qq
 # Install required applications/libraries
 RUN         apt-get install --no-install-recommends -qq \
                 build-essential \
-                libecap2-dev \
                 libssl-dev \
                 wget
 
@@ -45,7 +44,6 @@ RUN         ./configure \
                 --enable-icmp \
                 --enable-delay-pools \
                 --enable-icap-client \
-                --enable-ecap \
                 --enable-wccp \
                 --enable-wccpv2 \
                 --enable-snmp \
