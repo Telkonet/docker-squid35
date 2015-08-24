@@ -27,11 +27,8 @@ WORKDIR     /usr/src
 RUN         wget --quiet http://www.squid-cache.org/Versions/v3/3.5/squid-${SQUID35_VERSION}.tar.gz
 RUN         tar -xzf squid-${SQUID35_VERSION}.tar.gz && rm -f squid-${SQUID35_VERSION}.tar.gz
 
-# Enter our source directory
-RUN         cd /usr/src/squid-${SQUID35_VERSION}
-
 # Configure the squid build as desired
-RUN         ./configure \
+RUN         cd /usr/src/squid-${SQUID35_VERSION} && ./configure \
                 --prefix=/usr \
                 --localstatedir=/var \
                 --libexecdir=/usr/lib/squid \
@@ -57,4 +54,4 @@ RUN         ./configure \
                 --with-large-files
 
 # Perform squid compliation & installation
-RUN     make && make install
+RUN     cd /usr/src/squid-${SQUID35_VERSION} && make && make install
