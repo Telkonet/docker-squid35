@@ -1,5 +1,5 @@
 Squid:
-  image: sameersbn/squid:latest
+  image: telkonet/squid35:latest
   ports:
     - "3128:3128"
   volumes:
