@@ -18,6 +18,7 @@ RUN         apt-get update && apt-get upgrade -qq
 # Install required applications/libraries
 RUN         apt-get install --no-install-recommends -qq \
                 build-essential \
+                libecap2-dev \
                 libssl-dev \
                 wget
 
